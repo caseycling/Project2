@@ -12,16 +12,16 @@
     <form id="item-wanted-information">
         <ul>
           <li>
-            <label for="item">Item</label>
+            <label for="item">Product name</label>
             <input type="text" id="item" required="required">
           </li>
           <li>
-            <label for="photo">Photo of Item</label>
+            <label for="photo">Upload file</label>
             <input type="file" class="file-select" accept="image/*" onchange="readURL(this);">
             <img id="pic" src="#">
           </li>
           <li>
-            <label for="message">Message and Description</label>
+            <label for="message">Description</label>
             <textarea id="message" name="message" required="required"></textarea>
           </li>
         </ul>
@@ -45,7 +45,6 @@
                 <form method="POST" action="/items/update?_method=PUT" class="button-size">
                     <input type="hidden" name="item_id" type="text" value={{ this.id }}>
                     <br>
-            
                 </form>
                 {{/unless}}
                 {{/each}}
