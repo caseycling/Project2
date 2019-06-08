@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "",
+    "password": "spring2019",
     "database": "trade_db",
     "host": "localhost",
     "dialect": "mysql"

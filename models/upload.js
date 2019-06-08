@@ -14,10 +14,10 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     // needs to link to user once Steven has login done:)
-    Upload.associate = function(models) {
-        Upload.belongsTo(models.Login,{
-        });
-    };
+    // Upload.associate = function(models) {
+    //     Upload.belongsTo(models.Login,{
+    //     });
+    // };
 
     return Upload;
 }
