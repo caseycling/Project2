@@ -1,63 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <div class="card mt-4">
+        <div class="card-body">
 
-<!-- Profile Information -->
-<div class="container" id="top-bar">
-    <h1>User Profile</h1>
-
-
-</div>
-
-    <!-- user item uploading information --> 
-    <h2>Upload Item OR Service</h2>
-
-    <form id="item-wanted-information">
-        <ul>
-          <li>
-            <label for="item">Product name</label>
+          <h3 class="card-title">Register or Login</h3>
+          <p>
+            <label for="Username">Username</label>
             <input type="text" id="item" required="required">
-          </li>
-          <li>
-            <label for="photo">Upload photo</label>
-            <input type="file" class="file-select" accept="image/*" onchange="readURL(this);">
-            <img id="pic" src="#">
-          </li>
-          <li>
-            <label for="message">Description</label>
-            <textarea id="message" name="message" required="required"></textarea>
-          </li>
-        </ul>
-        <input type="submit">
-    </form>
-
-    <!-- List of already uploaded products by this user -->
-<div class="uploaded">
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Items already uploaded by the user previously</h2>
-                <!-- image/reveal section -->
-               <img id="myImage" src="">
-               <div id="results">
-                <a href="" id="result"></a>
-                <a href="" id="result2"></a>
-                <a href="" id="result3"></a>
-                <a href="" id="result4"></a>
-               </div>
-        
-                {{#each Uploads}}
-                {{#unless this.uploaded}}
-                    <input class="form-control" type="text" placeholder="{{ this.id }}. {{ this.item_name }}" readonly>
-                {{/unless}}
-                {{/each}}
-                   
-                <div class="col-md-4">
-                 {{#each Uploads}}
-                 {{#unless this.uploaded}}
-                    <form method="POST" action="/items/update?_method=PUT" class="button-size">
-                    <input type="hidden" name="item_id" type="text" value={{ this.id }}>
-                    <br>
-                    </form>
-                    {{/unless}}
-                    {{/each}}
-              </div>    
-        </div>  
+          <p>
+          <p>
+            <label for="Password">Password</label>
+            <input type="text" id="item" required="required">
+          <p>
+          
+            <strong>Description:</strong> {{example.description}}</p>
+            <a href="/">← Back To Home</a>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

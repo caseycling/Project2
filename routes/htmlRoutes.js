@@ -11,9 +11,9 @@ module.exports = function(app) {
     });
   });
 
-  // Load intro page
-  app.get("/example/:intro", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
+  // Load items page
+  app.get("/intro", function(req, res) {
+    db.Example.findAll({}).then(function(dbExample) {
       res.render("intro", {
         example: dbExample
       });
@@ -21,13 +21,15 @@ module.exports = function(app) {
   });
 
   // Load market page
-  app.get("/example/:market", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
+  app.get("/market", function(req, res) {
+    db.Example.findAll({}).then(function(dbExample) {
       res.render("market", {
         example: dbExample
       });
     });
   });
+
+
 
   // Load example page and pass in an example by id
   app.get("/example/:id", function(req, res) {
