@@ -7,7 +7,7 @@
 </div>
 
     <!-- user item uploading information --> 
-    <h2>Add an Item OR Service</h2>
+    <h2>Upload Item OR Service</h2>
 
     <form id="item-wanted-information">
         <ul>
@@ -16,7 +16,7 @@
             <input type="text" id="item" required="required">
           </li>
           <li>
-            <label for="photo">Upload file</label>
+            <label for="photo">Upload photo</label>
             <input type="file" class="file-select" accept="image/*" onchange="readURL(this);">
             <img id="pic" src="#">
           </li>
@@ -33,22 +33,30 @@
     <div class="row">
         <div class="col-md-4">
             <h2>Items already uploaded by the user previously</h2>
+                <!-- image/reveal section -->
+               <img id="myImage" src="">
+               <div id="results">
+                <a href="" id="result"></a>
+                <a href="" id="result2"></a>
+                <a href="" id="result3"></a>
+                <a href="" id="result4"></a>
+               </div>
+        
                 {{#each Uploads}}
                 {{#unless this.uploaded}}
                     <input class="form-control" type="text" placeholder="{{ this.id }}. {{ this.item_name }}" readonly>
                 {{/unless}}
                 {{/each}}
-        </div>        
-        <div class="col-md-4">
-            {{#each Uploads}}
-            {{#unless this.uploaded}}
-                <form method="POST" action="/items/update?_method=PUT" class="button-size">
+                   
+                <div class="col-md-4">
+                 {{#each Uploads}}
+                 {{#unless this.uploaded}}
+                    <form method="POST" action="/items/update?_method=PUT" class="button-size">
                     <input type="hidden" name="item_id" type="text" value={{ this.id }}>
                     <br>
-                </form>
-                {{/unless}}
-                {{/each}}
-        </div>
-        
+                    </form>
+                    {{/unless}}
+                    {{/each}}
+        </div>  
     </div>
 </div>
