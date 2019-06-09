@@ -1,8 +1,9 @@
 // Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
+var $exampleName = $("#item");
+var $exampleDescription = $("#message");
+var $examplePhoto = $("file-select");
 var $submitBtn = $("#submit");
-var $exampleList = $("#example-list");
+
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -65,7 +66,7 @@ var handleFormSubmit = function(event) {
   event.preventDefault();
 
   var example = {
-    text: $exampleText.val().trim(),
+    text: $exampleName.val().trim(),
     description: $exampleDescription.val().trim()
   };
 
@@ -78,7 +79,7 @@ var handleFormSubmit = function(event) {
     refreshExamples();
   });
 
-  $exampleText.val("");
+  $exampleName.val("");
   $exampleDescription.val("");
 };
 
