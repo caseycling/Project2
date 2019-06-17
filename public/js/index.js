@@ -1,34 +1,35 @@
-// // Get references to page elements
-// var $exampleText = $("#example-text");
-// var $exampleDescription = $("#example-description");
-// var $submitBtn = $("#submit");
-// var $exampleList = $("#example-list");
+// Get references to page elements
+var $exampleName = $("#item");
+var $exampleDescription = $("#message");
+var $examplePhoto = $("file-select");
+var $submitBtn = $("#submit");
 
-// // The API object contains methods for each kind of request we'll make
-// var API = {
-//   saveExample: function(example) {
-//     return $.ajax({
-//       headers: {
-//         "Content-Type": "application/json"
-//       },
-//       type: "POST",
-//       url: "api/examples",
-//       data: JSON.stringify(example)
-//     });
-//   },
-//   getExamples: function() {
-//     return $.ajax({
-//       url: "api/examples",
-//       type: "GET"
-//     });
-//   },
-//   deleteExample: function(id) {
-//     return $.ajax({
-//       url: "api/examples/" + id,
-//       type: "DELETE"
-//     });
-//   }
-// };
+
+// The API object contains methods for each kind of request we'll make
+var API = {
+  saveExample: function(example) {
+    return $.ajax({
+      headers: {
+        "Content-Type": "application/json"
+      },
+      type: "POST",
+      url: "api/examples",
+      data: JSON.stringify(example)
+    });
+  },
+  getExamples: function() {
+    return $.ajax({
+      url: "api/examples",
+      type: "GET"
+    });
+  },
+  deleteExample: function(id) {
+    return $.ajax({
+      url: "api/examples/" + id,
+      type: "DELETE"
+    });
+  }
+};
 
 // refreshExamples gets new examples from the db and repopulates the list
 // var refreshExamples = function() {
@@ -64,10 +65,10 @@
 // var handleFormSubmit = function(event) {
 //   event.preventDefault();
 
-//   var example = {
-//     text: $exampleText.val().trim(),
-//     description: $exampleDescription.val().trim()
-//   };
+  var example = {
+    text: $exampleName.val().trim(),
+    description: $exampleDescription.val().trim()
+  };
 
 //   if (!(example.text && example.description)) {
 //     alert("You must enter an example text and description!");
@@ -78,9 +79,9 @@
 //     refreshExamples();
 //   });
 
-//   $exampleText.val("");
-//   $exampleDescription.val("");
-// };
+  $exampleName.val("");
+  $exampleDescription.val("");
+};
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list

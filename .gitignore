@@ -60,3 +60,6 @@ typings/
 
 # next.js build output
 .next
+
+# Mac Finder Cache 
+.DS_Store
