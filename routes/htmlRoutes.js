@@ -1,16 +1,11 @@
 var db = require("../models");
 
-module.exports = function(app) {
-  // Load index page
-
-  app.get("/", function(req, res) {
-    res.render("index")
+var Op = db.Sequelize.Op;
+module.exports = function (app) {
+  app.get("/", function (req, res) {
+      res.render("index")
   });
 
-
- 
-const Op = db.Sequelize.Op;
-module.exports = function (app) {
   // Load market page
   app.get("/market", function (req, res) {
     db.Upload.destroy({
@@ -18,28 +13,28 @@ module.exports = function (app) {
         createdAt: { [Op.lt]: new Date(new Date() - 30 * 24 * 60 * 60 * 1000) }
       }
     }).then(function () {
-      // console.log(res);
-      var query = {};
       db.Upload.findAll({
-        where: query
-        , include: [db.Image]
+        include: [db.Image]
       }).then(function (dbUpload) {
         res.render("market", { Upload: dbUpload });
       });
-      
+
     });
   });
 
   // load uploading page
   app.get('/upload', function (req, res) {
     res.render("upload");
+    // find everything by that user 
   });
 
   // load trading page
   app.get('/trades', function (req, res) {
     res.render("trades");
   });
-  app.get('/about',function(req,res){
+
+  // load about page
+  app.get('/about', function (req, res) {
     res.render("about");
   })
 

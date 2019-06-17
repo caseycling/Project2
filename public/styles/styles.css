@@ -1,10 +1,23 @@
 /* GLOBAL SETTINGS */
 /* ==================================================== */
-
-
-body {
-  background: url("../images/6.png");
+#user{z-index:7}
+#logout{
+  border:none;
+  background:none;
+  padding:none;
 }
+body {
+  margin-top: 10%;
+  background: url("../images/trade.jpg");
+  background-repeat: no-repeat;
+  background-size: 180%;
+
+    /* width: 100%; */
+    /* height: 100%; */
+    /* overflow: auto; */
+    /* font-family: 'Ubuntu', sans-serif; */
+}
+
 
 p{
   margin-bottom: 10px;
@@ -54,10 +67,14 @@ button{
 
 
 .container {
+  background:white;
   width: 100%;
   max-width: 960px;
-  margin: 0 auto;
-  clear: both;
+  height:500px;
+  overflow: scroll;
+  padding:2%;
+  /* margin: 0 auto; */
+  /* clear: both; */
 }
 
 .uploaded {
@@ -67,10 +84,94 @@ button{
   margin: 20px 0 25px;
   overflow: auto;
 }
+/* navbar */
+.navbar{
+  background:rgb(255, 255, 255, 0.8);
+  padding-left: 5%;
+  padding-right:5%;
+}
+.navbar-brand{
+  color:#43a9a4;
+  font-weight: bold; 
+  font-size:30px;
+  margin-top:0%;
+  padding-top:0%;
+  padding-bottom:0%;
+}
+.nav-link{
+  color:#43a9a4;
+  font-size:20px;
+  padding-top:0%;
+  padding-bottom:0%;
+}
+.nav-link:hover {
+  color:#17716c;
+}
 
+/* index */
+ .jumbotron{
+  background:white;
+  padding:2%;
+ }
+ .intro{
+   font-size: 80px;
+ }
+ #signUpButtonNav, #signInButtonNav, #signInButton, #signUpButton, #addImage, #submit{
+  background:#4aaaa5; 
+  color: white;
+  border: none;
+}
+#signUpButtonNav:hover, #signInButtonNav:hover{
+  opacity:0.75
+}
 
+/* about */
+#about p {
+  font-size: 25px
+}
 
+/* market */
+.market{
+  color:#4aaaa5;
+  border-bottom: 2px solid rgb(177, 177, 177);
+  padding-bottom:5px;
+  font-size:30px;
+  padding-top:0;
+}
+.card-body{
+  padding-top:1%;
+}
 
+/* upload */
+.upload{
+  border: solid 2px #4aaaa5;
+  /* display:inline; */
+  float:right;
+  padding:2.5%;
+}
+.profile{
+  /* background:white;
+  /* width:800px;
+  height:500px;
+  margin-left: 20%; */
+  /* height:500px;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  clear: both; */ 
+float:left;
+padding-top:1%;
+}
+#uploaded, #upload{
+  color:#4aaaa5;
+  border-bottom: 2px solid rgb(177, 177, 177);
+  padding-bottom:5px;
+  font-size:30px;
+}
+#addImage, #submit{
+  border-radius:5px;
+  padding:3%;
+}
 
 
 /* adjustment when viewed from computer */

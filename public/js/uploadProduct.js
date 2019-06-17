@@ -1,4 +1,3 @@
-// Final upload product!
 // get inputs from handlebars
 var $product_name = $("#product_name");
 var $desription = $("#description");
@@ -41,7 +40,7 @@ var handleFormSubmit = function (event) {
   
   // make sure no data is overloaded
   if(res < 30){
-    $("#addImage").hide();
+    $(".create-form").hide();
      $("#fileForm").show();
   }else {
     alert("List full! please try later");

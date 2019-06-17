@@ -16,7 +16,6 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         }
-
     });
 
     // Links User model to Upload Model

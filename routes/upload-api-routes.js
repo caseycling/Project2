@@ -21,10 +21,8 @@ var parser = multer({ storage: storage });
 module.exports = function (app) {
     app.get("/upload", function (req, res) {
         db.Upload.findAll({
-            // where: {
-            //     useId : {...}
-            // }
-            // , include: [db.Image]
+            // where userId  is my id
+            include: [db.Image]
         }).then(function (dbUpload) {
             // res.json(dbUpload);
             res.render("upload", { Upload: dbUpload });

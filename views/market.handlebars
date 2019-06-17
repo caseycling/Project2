@@ -1,31 +1,51 @@
-<div class="container">
-    <div class="row">
-        <div class="col-8 offset-2">
-            <div class="card mt-4">
-                <div class="card-body">
-                    <h3 class="card-title">Market</h3>
-                    <ul>
-
-                        {{#each Upload}}
-                        {{#if available}}
-                        <li>
-                            <b>{{this.product_name}} </b> <br>
-                            {{this.description}} <br>
-                            <img src={{this.Image.url}} id="img" />
-                            <br>
-                    
-
-                                <form action="api/trade/{{id}}" method="POST">
-                                <button class="btn btn-danger float-right trade">trade</button>
-                            </form>
-                            <br><br>
-                            <hr>
-                        </li>
-                        {{/if}}
-                        {{/each}}
-                    </ul>
-                </div>
-            </div>
-        </div>
+{{!-- navigation bar --}}
+<nav class="navbar navbar-expand-lg fixed-top">
+    {{!-- app name --}}
+    <div class="navbar-brand">Barter Bud <i class="fas fa-sync-alt"></i></div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    {{!-- page links --}}
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link" href="about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="market">Market</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="upload">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" method="GET" href="/logout">Logout</a>
+                </li>
+            </ul>
+        </ul>
     </div>
-    <script src="/js/trade.js"></script>
+</nav>
+
+{{!-- list of availabe products for trade --}}
+<div class="container">
+    <div class="card-body">
+        <h3 class="card-title market">Available</h3>
+        <ul>
+            {{#each Upload}}
+            {{#if available}}
+            <b>{{this.product_name}} </b> <br>
+            {{this.description}} <br>
+            <img src={{this.Image.url}} id="img" alt="no image uploaded" />
+            <br>
+            <form action="api/trade/{{id}}" method="POST">
+                <button class="btn btn-danger float-right trade">trade</button>
+            </form>
+            <br><br>
+            <hr>
+            {{/if}}
+            {{/each}}
+        </ul>
+    </div>
+</div>
+<script src="/js/trade.js"></script>

@@ -1,60 +1,75 @@
-<!-- Profile Information -->
-<div class="container" id="top-bar">
-    <h1>User Profile</h1>
-
-
-</div>
-
-<!-- user item uploading information -->
-<h2>Upload Item </h2>
-
-<form class="create-form" action="/api/upload" method="POST">
-    <div class="form-group">
-        <label for="ca">Product name:</label>
-        <input type="text" id="product_name" name="product_name">
+{{!-- navigation bar --}}
+<nav class="navbar navbar-expand-lg fixed-top">
+    {{!-- app name --}}
+    <div class="navbar-brand">Barter Bud <i class="fas fa-sync-alt"></i></div> 
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    {{!-- page links --}}
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link" href="about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="market">Market</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="upload">Profile</a>
+                </li>
+                    <a class="nav-link" method="GET" href="/logout">Logout</a>
+                </li>
+            </ul>
+        </ul>
     </div>
-    <div class="form-group">
-        <label for="ca">Description:</label>
-        <input type="text" id="description" name="description">
+</nav>
+
+{{!-- Upload/Profile --}}
+<div class="container">
+    <!-- List of already uploaded products by this user -->
+    <div class="col-md-8 profile">
+        <h2 id="uploaded">Items Uploaded by User</h2>
+        {{#each Upload}}
+        <li>
+            <b>{{this.product_name}} </b><br>
+            {{this.description}} <br>
+            <img src={{this.Image.url}} id="img" alt="no image uploaded" />
+            <br>
+            {{#if requested}}
+            <form action="/api/availability/{{id}}" method="POST">
+                <button class="btn btn-danger float-right trade">requested</button>
+            </form>
+            {{/if}}
+            <br><br>
+            <hr>
+        </li>
+        {{/each}}
     </div>
 
-    <button id="addImage" type="submit">Add Image</button>
-</form>
-
-<form id="fileForm" action='/api/images' method="post" enctype="multipart/form-data">
-    <input type='file' name='image' id='image' />
-    <button id="submit" type="submit">submit</button>
-</form>
-
-<!-- List of already uploaded products by this user -->
-<div class="uploaded">
+    {{!-- upload item --}}
     <div class="row">
-        <div class="col-md-4">
-            <h2>Items already uploaded by the user previously</h2>
-            {{#each Upload}}
-            {{!-- if userId --}}
-            <li>
-                <b>{{this.product_name}} </b> <br>
-                {{this.description}} <br>
-                <img src={{this.Image.url}} id="img" />
-                <br>
-                {{#if requested}}
-                <form action="/api/availability/{{id}}" method="POST">
-                    <button class="btn btn-danger float-right trade">requested</button>
-                </form>
-                <br><br>
-                <hr>
-                {{/if}}
-            </li>
-
-            {{/each}}
-            <!-- image/reveal section -->
+        <div class="col-md-12 upload">
+            <h2 id="upload">Upload</h2>
+            <form class="create-form" action="/api/upload" method="POST">
+                <div class="form-group">
+                    <label for="ca">Product name:</label>
+                    <input type="text" id="product_name" name="product_name">
+                </div>
+                <div class="form-group">
+                    <label for="ca">Description:</label>
+                    <input type="text" id="description" name="description">
+                </div>
+                <button id="addImage" type="submit">Add Image</button>
+            </form>
+            <form id="fileForm" action='/api/images' method="post" enctype="multipart/form-data">
+                <input type='file' name='image' id='image' />
+                <button id="submit" type="submit">submit</button>
+            </form>
         </div>
     </div>
 </div>
-</div>
-
-
-
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/uploadProduct.js"></script>
+<script src="/js/login.js"></script>

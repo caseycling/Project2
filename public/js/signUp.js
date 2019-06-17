@@ -7,6 +7,8 @@ $(document).ready(function() {
     $("#signUpButton").on("click", function() {
         event.preventDefault();
         console.log("made it")
+
+         // check if all values are entered
         if (!nameInput.val().trim() || !emailInput.val().trim() || !passwordInput.val()) {
             return;
           }
@@ -17,11 +19,14 @@ $(document).ready(function() {
             password: passwordInput.val().trim()
         };
         console.log(newUser.name + "<--newUser.name") 
+
+        // call sign up function 
         signUp();
         nameInput.val("");
         emailInput.val("");
         passwordInput.val("");
 
+        // function that make ajax call
         function signUp() {
             $.ajax("/api/new", {
                 type: "POST",

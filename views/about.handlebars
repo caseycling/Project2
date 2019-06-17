@@ -1,17 +1,43 @@
-<!-- App Background Information -->
-<!-- Overall Bootstrap Grid -->
-    <div class="container">
-      <!-- Jumbotron with Title -->
-      <div class="jumbotron">
-        <h1 class="text-center">
-          <strong>Trader App</strong>
-        </h1>
-        <h2>About the app</h2>
-        
-        <p>Bartering is a tradition as old as time itself. In this modern 
-        age, we have lost touch with this basic root of human civilization.
-        Introducing Barter Bud. Barter Bud allows users to create a 
-        profile where they can upload pictures of things or services
-        they would like to trade and can interact and make offers with 
-        other users for trading said items or services.</p>
-    </div>
+{{!-- navigation bar --}}
+<nav class="navbar navbar-expand-lg fixed-top">
+  {{!-- app name --}}
+  <div class="navbar-brand">Barter Bud <i class="fas fa-sync-alt"></i></div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  {{!-- page links --}}
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link" href="about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="market">Market</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="upload">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" method="GET" href="/logout">Logout</a>
+        </li>
+      </ul>
+    </ul>
+  </div>
+</nav>
+
+{{!-- about --}}
+<div class="container">
+  <div class="jumbotron" id="about">
+    <h1 class="text-center">
+      What is <strong>Barter Bud</strong>?
+    </h1>
+    <p>Bartering is a tradition as old as time itself. In this modern
+      age, we have lost touch with this basic root of human civilization.
+      Introducing Barter Bud. Barter Bud allows users to create a
+      profile where they can upload pictures of things or services
+      they would like to trade and can interact and make offers with
+      other users for trading said items or services.</p>
+  </div>
+</div>

@@ -7,8 +7,10 @@ module.exports = function (app) {
     // Get all available items for particular user
     app.get("/trades", function (req, res) {
         db.Upload.findAll({
-            where: { available: true
-             }
+            where: {
+                requested: false
+                // userId is my id
+            }, include :[db.Image]
         }).then(function (dbUpload) {
             // res.json(item);
             res.render("trades", { Upload: dbUpload });
@@ -17,34 +19,26 @@ module.exports = function (app) {
     var requested;
 
     app.post("/api/trade/:id", function (req, res) {
-        //  app.post("/api/trade/:id/:userID", function (req, res) {
-
         db.Upload.update({
             requested: true,
-            // tradeWith: userID
         }, {
                 where: {
                     id: req.params.id
                 }
             }).then(function () {
-       
                 res.redirect("/trades");
-           
-
             });
     });
-    
-    // when trade is confirmed by both user...
 
     // Update availability status
     app.post("/api/availability/:id", function (req, res) {
         db.Upload.update({
             available: false
         }, {
-            where: {
-                id: req.params.id
-            }
-        })
+                where: {
+                    id: req.params.id
+                }
+            })
             .then(function () {
                 res.redirect("/market");
             })
