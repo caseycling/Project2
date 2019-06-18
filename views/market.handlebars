@@ -31,12 +31,14 @@
 <div class="container">
     <div class="card-body">
         <h3 class="card-title market">Available</h3>
+        <p>{{this.id}}</p>
         <ul>
             {{#each Upload}}
             {{#if available}}
-            <b>{{this.product_name}} </b> <br>
-            {{this.description}} <br>
-            <img src={{this.Image.url}} id="img" alt="no image uploaded" />
+            <b>Product Name: {{this.product_name}} </b> <br>
+            <b>Condition: </b>{{this.condition}} <br>
+            <b>Description: </b>{{this.description}} <br>
+            <b>Image: </b><br><img src={{this.Image.url}} id="img" alt="no image uploaded" />
             <br>
             <form action="api/trade/{{id}}" method="POST">
                 <button class="btn btn-danger float-right trade">trade</button>

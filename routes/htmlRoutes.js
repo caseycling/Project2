@@ -3,7 +3,7 @@ var db = require("../models");
 var Op = db.Sequelize.Op;
 module.exports = function (app) {
   app.get("/", function (req, res) {
-      res.render("index")
+      res.render("index", {message: req.flash('error')});
   });
 
   // Load market page

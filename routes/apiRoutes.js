@@ -12,12 +12,16 @@ module.exports = function (app) {
       password: req.body.password,
       // currentUser: true
     }).then(function (dbUser) {
+      // console.log(dbUser);
       res.json(dbUser);
+    }).catch(function (err) {
+      res.json(err.name);
+      // console.log(err.name)
     });
   });
 
   // Login
-  app.post("/api/login", passport.authenticate("local"), function (_req, res) {
+  app.post("/api/login", passport.authenticate("local", {}), function (_req, res) {
     res.sendStatus(204)
   });
 

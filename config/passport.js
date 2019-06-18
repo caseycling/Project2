@@ -21,11 +21,12 @@ passport.use(
                     });
                 } 
                 
-                // else if (!dbUser.validPassword(password)) {
-                //     return done(null, false, {
-                //         message: "Incorrect Password."
-                //     });
-                // }
+                else if (dbUser.password !=password) {
+                    console.log("hi")
+                    return done(null, false, {
+                        message: "Incorrect Password."
+                    });
+                }
                 return done(null, dbUser);
             });       
         }

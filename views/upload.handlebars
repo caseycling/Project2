@@ -1,7 +1,7 @@
 {{!-- navigation bar --}}
 <nav class="navbar navbar-expand-lg fixed-top">
     {{!-- app name --}}
-    <div class="navbar-brand">Barter Bud <i class="fas fa-sync-alt"></i></div> 
+    <div class="navbar-brand">Barter Bud <i class="fas fa-sync-alt"></i></div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -19,7 +19,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="upload">Profile</a>
                 </li>
-                    <a class="nav-link" method="GET" href="/logout">Logout</a>
+                <a class="nav-link" method="GET" href="/logout">Logout</a>
                 </li>
             </ul>
         </ul>
@@ -27,15 +27,17 @@
 </nav>
 
 {{!-- Upload/Profile --}}
-<div class="container">
-    <!-- List of already uploaded products by this user -->
-    <div class="col-md-8 profile">
-        <h2 id="uploaded">Items Uploaded by User</h2>
-        {{#each Upload}}
-        <li>
-            <b>{{this.product_name}} </b><br>
-            {{this.description}} <br>
-            <img src={{this.Image.url}} id="img" alt="no image uploaded" />
+<div class="container uploaded">
+    <div class="row">
+        <!-- List of already uploaded products by this user -->
+        <div class="profile">
+            <h2 id="uploaded">Items Uploaded by User</h2>
+            {{#each Upload}}
+            {{#if available}}
+            <b>Product Name: {{this.product_name}} </b> <br>
+            <b>Condition: </b>{{this.condition}} <br>
+            <b>Description: </b>{{this.description}} <br>
+            <b>Image: </b><br><img src={{this.Image.url}} id="img" alt="no image uploaded" />
             <br>
             {{#if requested}}
             <form action="/api/availability/{{id}}" method="POST">
@@ -44,27 +46,53 @@
             {{/if}}
             <br><br>
             <hr>
-        </li>
-        {{/each}}
-    </div>
+            {{/if}}
+            {{/each}}
+        </div>
 
-    {{!-- upload item --}}
-    <div class="row">
-        <div class="col-md-12 upload">
+        {{!-- upload item --}}
+        <div class="upload">
             <h2 id="upload">Upload</h2>
             <form class="create-form" action="/api/upload" method="POST">
                 <div class="form-group">
                     <label for="ca">Product name:</label>
-                    <input type="text" id="product_name" name="product_name">
+                    <input type="text" id="product_name" name="product_name" required>
+                    <div class="invalid-feedback">
+                        Please enter product name.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="condition">Condition:</label>
+                    <select class="form-control" id="condition" required>
+                        <option>New</option>
+                        <option>Great</option>
+                        <option>Fair</option>
+                        <option>Okay</option>
+                        <option>Bad</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Please choose the condition of product.
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="ca">Description:</label>
-                    <input type="text" id="description" name="description">
+                    <input type="text" id="description" name="description" required>
+                    <div class="invalid-feedback">
+                        Please enter description of product.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="contact">Email address</label>
+                    <input type="email" class="form-control" id="contact" placeholder="name@example.com" required>
+                    <div class="invalid-feedback">
+                        Please enterr email address for contact
+                    </div>
                 </div>
                 <button id="addImage" type="submit">Add Image</button>
             </form>
             <form id="fileForm" action='/api/images' method="post" enctype="multipart/form-data">
-                <input type='file' name='image' id='image' />
+                <input type='file' name='image' id='image' required>
+                <br></br>
                 <button id="submit" type="submit">submit</button>
             </form>
         </div>

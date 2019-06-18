@@ -8,6 +8,7 @@ $(document).ready(function () {
         console.log("made it")
         // check if all values are entered
         if (!emailInput.val().trim() || !passwordInput.val()) {
+            alert("You must enter all fields!");
             return;
         }
 
@@ -31,6 +32,7 @@ $(document).ready(function () {
                 window.location.replace("/market")
             }).catch(function (err) {
                 console.log(err);
+                alert("Wrong email or password. Please try again");
             })
         }
     })

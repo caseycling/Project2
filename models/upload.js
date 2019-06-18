@@ -2,10 +2,20 @@
 module.exports = function (sequelize, DataTypes) {
     var Upload = sequelize.define("Upload", {
         product_name: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        condition: {
+            type: DataTypes.STRING,
+            allowNull: false
         },
         description: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        contact: {
+            type: DataTypes.STRING,
+            allowNull: false,
         },
         requested: {
             type: DataTypes.BOOLEAN,

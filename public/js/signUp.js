@@ -1,24 +1,25 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
     let nameInput = $("#signUpName");
     let emailInput = $("#signUpEmail");
     let passwordInput = $("#signUpPassword");
 
-    $("#signUpButton").on("click", function() {
+    $("#signUpButton").on("click", function () {
         event.preventDefault();
         console.log("made it")
 
-         // check if all values are entered
+        // check if all values are entered
         if (!nameInput.val().trim() || !emailInput.val().trim() || !passwordInput.val()) {
+            alert("You must enter all fields!");
             return;
-          }
+        }
 
         let newUser = {
             name: nameInput.val().trim(),
             email: emailInput.val().trim(),
             password: passwordInput.val().trim()
         };
-        console.log(newUser.name + "<--newUser.name") 
+        console.log(newUser.name + "<--newUser.name")
 
         // call sign up function 
         signUp();
@@ -31,14 +32,19 @@ $(document).ready(function() {
             $.ajax("/api/new", {
                 type: "POST",
                 data: newUser
-            }).then(function(dbEntry) {
-                console.log(dbEntry);
-                window.location.replace("/market")
+            }).then(function (dbEntry) {
+                if (dbEntry == "SequelizeUniqueConstraintError") {
+                    alert("Already existing email. Try login");
+                } else if (dbEntry == "SequelizeValidationError") {
+                    alert("Please enter valid email address");
+                } else {
+                    // console.log(dbEntry);
+                    window.location.replace("/market")
+                }
+            }).catch(function (err) {
+                // console.log("wow")
+                console.log(err);
             })
         }
-
-    
-        
     })
-       
 })
