@@ -1,8 +1,9 @@
+// Final upload api routes!
 // Requiring our models
 var db = require("../models");
 
 // cloudinary and multer
-const multer = require("multer");
+var multer = require("multer");
 var cloudinary = require('cloudinary');
 
 cloudinary.config({
@@ -13,19 +14,32 @@ cloudinary.config({
 
 var cloudinaryStorage = require("multer-storage-cloudinary");
 
-const storage = cloudinaryStorage({ cloudinary: cloudinary, folder: "demo", allowedFormats: ["jpg", "png"], transformation: [{ width: 500, height: 500, crop: "limit" }] });
-const parser = multer({ storage: storage });
+var storage = cloudinaryStorage({ cloudinary: cloudinary, folder: "demo", allowedFormats: ["jpg", "png"], transformation: [{ width: 500, height: 500, crop: "limit" }] });
+var parser = multer({ storage: storage });
+
 
 module.exports = function (app) {
+    app.get("/upload", function (req, res) {
+        db.Upload.findAll({
+            // where userId  is my id
+            include: [db.Image]
+        }).then(function (dbUpload) {
+            // res.json(dbUpload);
+            res.render("upload", { Upload: dbUpload });
+        });
+
+    });
+
     // upload product
     app.post("/api/upload", function (req, res) {
         db.Upload.create({
             product_name: req.body.product_name,
-            description: req.body.description,
-            uploaded: true
+            description: req.body.description
 
         }).then(function () {
-            console.log("You can upload image now!");
+            db.Upload.count({}).then(function(db){
+                res.json(db);
+            })
         });
     });
 
@@ -34,9 +48,7 @@ module.exports = function (app) {
         var result = cloudinary.v2.uploader.upload(req.file.path)
         db.Image.create({
             url: req.file.secure_url
-
         }).then(function (newImage) {
-            
             // connect Image table with Upload table
             db.Upload.update({
                 ImageId: newImage.id

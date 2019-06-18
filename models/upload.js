@@ -7,17 +7,20 @@ module.exports = function (sequelize, DataTypes) {
         description: {
             type: DataTypes.STRING
         },
-        uploaded: {
-            type:DataTypes.BOOLEAN,
+        requested: {
+            type: DataTypes.BOOLEAN,
             defaultValue: false
+        },
+        available: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: true
         }
     });
 
-    // needs to link to user once Steven has login done:)
-    Upload.associate = function(models) {
-        Upload.belongsTo(models.Image, {
-        });
-     };
+    Upload.associate = function (models) {
+        Upload.belongsTo(models.Image);
+        Upload.belongsTo(models.User);
+    };
 
     return Upload;
 }

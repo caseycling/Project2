@@ -1,24 +1,30 @@
-var db = require("../models");
+const db = require("../models");
+const passport = require("../config/passport")
+const express = require("express")
 
-module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+module.exports = function (app) {
+
+  // Create a new user
+  app.post("/api/new", function (req, res) {
+    db.User.create({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+      // currentUser: true
+    }).then(function (dbUser) {
+      res.json(dbUser);
     });
   });
 
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
-    });
+  // Login
+  app.post("/api/login", passport.authenticate("local"), function (_req, res) {
+    res.sendStatus(204)
   });
 
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
-    });
+  // Logout
+  app.get('/logout', (req, res) => {
+    req.logout();
+    req.flash('success_msg', 'You are logged out');
+    res.redirect('/');
   });
-};
+}

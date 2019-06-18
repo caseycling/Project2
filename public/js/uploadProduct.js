@@ -4,6 +4,7 @@ var $desription = $("#description");
 var $file_path = $("#file_path");
 var $availableList = $("#available-list");
 var $submitBtn = $("#addImage");
+var data;
 
 // api object 
 var API = {
@@ -30,17 +31,26 @@ var handleFormSubmit = function (event) {
   };
 
   if (!(upload.product_name && upload.description)) {
-    alert("You must enter an example text and description!");
+    alert("You must enter a title and description!");
     return;
   }
   // call api save function
-  API.save(upload).then(function () {
+  API.save(upload).then(function (res) {
+  console.log(res);
+  
+  // make sure no data is overloaded
+  if(res < 30){
+    $(".create-form").hide();
+     $("#fileForm").show();
+  }else {
+    alert("List full! please try later");
+    window.location.pathname = '/market'
+  }
   });
 
-  // $product_name.val("");
-  // $desription.val("");
-   // ***needs to be adjusted***
-  alert("You can upload image now!");
+  $product_name.val("");
+  $desription.val("");
 };
 
 $submitBtn.on("click", handleFormSubmit);
+$("#fileForm").hide();

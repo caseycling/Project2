@@ -1,12 +1,13 @@
 require("dotenv").config();
+var flash = require("connect-flash");
+var cookieParser = require("cookie-parser")
+var session = require("express-session")
+var passport = require("passport");
 var express = require("express");
 var exphbs = require("express-handlebars");
+
+
 var db = require("./models");
-/*test
-var multer = require("multer");
-var cloudinary = require("cloudinary");
-var cloudinaryStorage = require("multer-storage-cloudinary");
-*/
 
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -15,6 +16,14 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
+
+app.use(cookieParser("keyboard cat"));
+app.use(passport.initialize());
+app.use(session({ 
+  cookie: { maxAge: 60000 },
+  secret: "keyboard cat" 
+}));
+app.use(flash());
 
 // Handlebars
 app.engine(
@@ -28,6 +37,7 @@ app.set("view engine", "handlebars");
 // Routes
 require("./routes/upload-api-routes")(app);
 require("./routes/apiRoutes")(app);
+require("./routes/trade-api-routes")(app);
 require("./routes/htmlRoutes")(app);
 
 var syncOptions = { force: false };

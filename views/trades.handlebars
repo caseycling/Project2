@@ -27,25 +27,28 @@
     </div>
 </nav>
 
-{{!-- list of availabe products for trade --}}
 <div class="container">
-    <div class="card-body">
-        <h3 class="card-title market">Available</h3>
-        <ul>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <div class="card mt-4">
+        <div class="card-body">
+          <h3 class="card-title">My list</h3>
+          <ul>
             {{#each Upload}}
-            {{#if available}}
-            <b>{{this.product_name}} </b> <br>
-            {{this.description}} <br>
-            <img src={{this.Image.url}} id="img" alt="no image uploaded" />
-            <br>
-            <form action="api/trade/{{id}}" method="POST">
-                <button class="btn btn-danger float-right trade">trade</button>
-            </form>
-            <br><br>
-            <hr>
-            {{/if}}
+            <li>
+              <b>{{this.product_name}} </b> <br>
+              {{this.description}} <br>
+              <img src={{this.Image.url}} id="img" />
+              <br>
+              <form action="/api/availability/{{id}}" method="POST">
+                <button class="btn btn-danger float-right tradeWith">confirm</button>
+              </form>
+              <br><br>
+              <hr>
+            </li>
             {{/each}}
-        </ul>
+          </ul>
+        </div>
+      </div>
     </div>
-</div>
-<script src="/js/trade.js"></script>
+  </div>

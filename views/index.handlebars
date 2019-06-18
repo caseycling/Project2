@@ -1,25 +1,89 @@
-<div class="container">
-  <div class="row">
-    <div class="col-8 offset-2">
-      <div class="card mt-4">
-        <div class="card-body">
+{{!-- main intro and sign up/in --}}
+<div id="home">
+  <div class="container">
+    <div class="row">
+      <div class="col-8 offset-2">
+        <div class="jumbotron">
+          <h1 class="intro">Welcome to Barter Bud <i class="fas fa-sync-alt"></i><div id ="#user"></div></h1>
+          <br></br>
+          <a class="btn btn-primary btn-lg" data-toggle="modal" data-target="#signUpModal" role="button"
+            id="signUpButtonNav">Sign Up</a>
 
-          <h3 class="card-title">Register or Login</h3>
-          <p>
-            <label for="Username">Username</label>
-            {{!-- ***id needs to be changed --}}
-            <input type="text" id="item" required="required">
-          <p>
-          <p>
-            <label for="Password">Password</label>
-            {{!-- ***id needs to be changed --}}
-            <input type="text" id="item" required="required">
-          <p>
-            {{!-- ***I don't think we need line 19 and 20 --}}
-            {{!-- <strong>Description:</strong> {{example.description}}</p>
-            <a href="/">← Back To Home</a> --}}
+          <a class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target="#signInModal" role="button"
+            id="signInButtonNav">Sign in</a>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+{{!-- sign in  --}}
+<div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Welcome!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <input type="email" class="form-control email" id="signInEmail" aria-describedby="emailHelp"
+              placeholder="Enter User's Email">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control password" id="signInPassword" placeholder="Password">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" id="signInButton">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- signup --}}
+<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Welcome!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <input type="text" class="form-control name" id="signUpName" aria-describedby="emailHelp"
+              placeholder="Enter Name">
+          </div>
+          <div class="form-group">
+            <input type="email" class="form-control email" id="signUpEmail" aria-describedby="emailHelp"
+              placeholder="Enter Email">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control password" id="signUpPassword" placeholder="Password">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-success" id="signUpButton">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript"
+  src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script src="/js/index.js"></script>
+<script src="/js/login.js"></script>
+<script src="/js/signUp.js"></script>
