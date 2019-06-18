@@ -27,9 +27,11 @@
 </nav>
 
 {{!-- Upload/Profile --}}
-<div class="container">
+<div class="container uploaded">
+    <div class="row">
     <!-- List of already uploaded products by this user -->
-    <div class="col-md-8 profile">
+    {{!-- <div class="col-md-8 profile"> --}}
+        <div class = "profile">
         <h2 id="uploaded">Items Uploaded by User</h2>
         {{#each Upload}}
         <li>
@@ -46,11 +48,13 @@
             <hr>
         </li>
         {{/each}}
-    </div>
+        </div>
+    {{!-- </div> --}}
 
     {{!-- upload item --}}
-    <div class="row">
-        <div class="col-md-12 upload">
+    {{!-- <div class="row"> --}}
+        <div class = "upload">
+        {{!-- <div class="col-md-12 upload"> --}}
             <h2 id="upload">Upload</h2>
             <form class="create-form" action="/api/upload" method="POST">
                 <div class="form-group">
