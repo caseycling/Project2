@@ -29,7 +29,7 @@ module.exports = function (sequelize, DataTypes) {
 
     Upload.associate = function (models) {
         Upload.belongsTo(models.Image);
-        // Upload.belongsTo(models.User);
+        Upload.belongsTo(models.User);
     };
 
     return Upload;
