@@ -19,9 +19,9 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     // Links User model to Upload Model
-    User.associate = function (models) {
-        User.hasMany(models.Upload)
-    };
+    // User.associate = function (models) {
+    //     User.hasMany(models.Upload)
+    // };
 
     return User;
 

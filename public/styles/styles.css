@@ -33,6 +33,9 @@ img{
   overflow: scroll;
   padding:2%;
 }
+h5{
+  color: red;
+}
 
 /* navbar */
 .navbar{
@@ -100,7 +103,7 @@ img{
   padding:2.5%;
   display:inline;
   width: 30%;
-  height:325px;
+  height:auto;
 }
 .profile{ 
   float:left;
@@ -138,21 +141,13 @@ input{
   .container{
     height:1000px
   }
-  .about{
-    height:auto;
-    /* height:1000px */
-  }
   img{
-    /* width:500px;
-    height: 300px; */
     margin-bottom:10%;
   }
 }
 
 @media screen and (max-width: 812px) {
   body {
-      /* margin-left: 1.5%;
-      margin-right:1.5%; */
       background-size: 750%;
   } 
   .topnav {
@@ -204,16 +199,12 @@ input{
   h2{
     font-size:15px;
   }
-  #about{
-    width:100%
-  }
   .upload{
     border: solid 2px #4aaaa5;
     float:right;
     margin-left:5%;
     padding:5%;
     width: 90%;
-    height:auto;
   }
   .profile{ 
     display:block;
