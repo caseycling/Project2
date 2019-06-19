@@ -2,26 +2,34 @@
 module.exports = function (sequelize, DataTypes) {
     var Upload = sequelize.define("Upload", {
         product_name: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        condition: {
+            type: DataTypes.STRING,
+            allowNull: false
         },
         description: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull: false
         },
-        // requested: {
-        //     type: DataTypes.BOOLEAN,
-        //     defaultValue: false
-        // },
-        // available: {
-        //     type: DataTypes.BOOLEAN,
-        //     defaultValue: false
-        // }
-
+        contact: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        requested: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+        },
+        available: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: true
+        }
     });
 
     Upload.associate = function (models) {
-        Upload.belongsTo(models.Image, {});
-        // needs to link to user once Steven has login done:)
-        // Upload.belongsTo(models.User, { foreignKey: "ownerId" });
+        Upload.belongsTo(models.Image);
+        Upload.belongsTo(models.User);
     };
 
     return Upload;

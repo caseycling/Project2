@@ -1,9 +1,8 @@
-// Final upload product!
 // get inputs from handlebars
 var $product_name = $("#product_name");
 var $desription = $("#description");
-var $file_path = $("#file_path");
-var $availableList = $("#available-list");
+var $condition = $("#condition");
+var $contact = $("#contact");
 var $submitBtn = $("#addImage");
 var data;
 
@@ -29,10 +28,12 @@ var handleFormSubmit = function (event) {
   var upload = {
     product_name: $product_name.val().trim(),
     description: $desription.val().trim(),
+    condition: $condition.val().trim(),
+    contact: $contact.val().trim(),
   };
 
-  if (!(upload.product_name && upload.description)) {
-    alert("You must enter a title and description!");
+  if (!(upload.product_name && upload.description && upload.condition && upload.contact)) {
+    alert("You must enter all fields!");
     return;
   }
   // call api save function
@@ -40,17 +41,14 @@ var handleFormSubmit = function (event) {
   console.log(res);
   
   // make sure no data is overloaded
-  if(res.id < 30){
-    $("#addImage").hide();
+  if(res < 30){
+    $(".create-form").hide();
      $("#fileForm").show();
   }else {
     alert("List full! please try later");
     window.location.pathname = '/market'
   }
   });
-
-  $product_name.val("");
-  $desription.val("");
 };
 
 $submitBtn.on("click", handleFormSubmit);

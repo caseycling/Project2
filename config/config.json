@@ -1,18 +1,27 @@
 {
   "development": {
     "username": "root",
+<<<<<<< HEAD
     "password": "$3ndNudes",
+=======
+    "password": "",
+>>>>>>> 9cdee9028adafcd2658ed23400204674adc08460
     "database": "trade_db",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
+<<<<<<< HEAD
     "username": "root",
     "password": "$3ndNudes",
     "database": "testdb",
     "host": "localhost",
     "dialect": "mysql",
     "logging": false
+=======
+    "use_env_variable": "JAWSDB_URL",
+    "dialect": "mysql"
+>>>>>>> 9cdee9028adafcd2658ed23400204674adc08460
   },
   "production": {
     "use_env_variable": "JAWSDB_URL",

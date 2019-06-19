@@ -11,14 +11,24 @@
   },
   "license": "ISC",
   "dependencies": {
-    "cloudinary": "^1.14.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.4",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
+    "express-session": "^1.16.2",
+    "flash": "^1.1.0",
+    "jslint": "^0.12.1",
+    "lint": "^0.7.0",
+    "cloudinary": "^1.14.0",
     "multer": "^1.4.1",
     "multer-storage-cloudinary": "^2.2.1",
     "mysql2": "^1.6.5",
-    "sequelize": "^5.8.7"
+    "nodemon": "^1.19.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "sequelize": "^5.8.7",
+    "session": "^0.1.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",
