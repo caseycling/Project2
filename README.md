@@ -1,3 +1,3 @@
-# Project2
+# Barter Bud
 
-###Our Project!
+  
